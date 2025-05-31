@@ -69,25 +69,34 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
-      <button>Trigger a Global Error</button>
+      <button id="console-log">Console Log</button>
+      <button id="console-error">Console Error</button>
+      <button id="console-count">Console Count</button>
+      <button id="console-warn">Console Warn</button>
+      <button id="console-assert">Console Assert</button>
+      <button id="console-clear">Console Clear</button>
+      <button id="console-dir">Console Dir</button>
+      <button id="console-dirxml">Console dirxml</button>
+      <button id="console-group-start">Console Group Start</button>
+      <button id="console-group-end">Console Group End</button>
+      <button id="console-table">Console Table</button>
+      <button id="start-timer">Start Timer</button>
+      <button id="end-timer">End Timer</button>
+      <button id="console-trace">Console Trace</button>
+      <button id="global-error">Trigger a Global Error</button>
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "1d48c2c0bcfe4a5bade273e2dbafd252"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+
+  <script>
+  
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -99,9 +108,227 @@
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
+    var count = 1;
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+
+    function buttonClick(buttonName){
+      const consoleLog = errorBtns.find(
+        btn => btn.textContent.trim() === buttonName
+      );
+    }
+
+
+    //Console Log
+    const consoleLog = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Log"
+    );
+
+    consoleLog.addEventListener('click', e => {
+      e.preventDefault();
+      console.log("Console Log Demo");
+    })
+
+
+    //Console Error
+    const consoleError = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Error"
+    );
+
+    consoleError.addEventListener('click', e => {
+      e.preventDefault();
+      console.error("Console Error Demo");
+    })
+
+
+    //Console Count
+    const consoleCount = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Count"
+    );
+
+    consoleCount.addEventListener('click', e => {
+      e.preventDefault();
+      console.log('Count is', count++);
+    })
+    
+
+    //Console Warn
+    const consoleWarn = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Warn"
+    );
+
+    consoleWarn.addEventListener('click', e => {
+      e.preventDefault();
+      console.warn("Console Warn Demo");
+    })
+
+
+    //Console Assert
+    const consoleAssert = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Assert"
+    );
+
+    consoleAssert.addEventListener('click', e => {
+      e.preventDefault();
+      console.assert(1 > 2, "1 is not greater than 2");
+    })
+
+
+    //Console Clear
+    const consoleClear = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Clear"
+    );
+
+    consoleClear.addEventListener('click', e => {
+      e.preventDefault();
+      console.clear();
+    })
+
+
+
+    //Console Dir
+    const consoleDir = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Dir"
+    );
+
+    consoleDir.addEventListener('click', e => {
+      e.preventDefault();
+      console.dir(consoleDir);
+    })
+
+
+
+    //Console Dirmxl
+    const consoleDirxml = errorBtns.find(
+      btn => btn.textContent.trim() === "Console dirxml"
+    );
+
+    consoleDirxml.addEventListener('click', e => {
+      e.preventDefault();
+      console.dirxml(consoleDir);
+    })
+
+
+    //Console Group Start
+    const consoleGroupStart = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Group Start"
+    );
+
+    consoleGroupStart.addEventListener('click', e => {
+      e.preventDefault();
+      console.group("My Group");
+    })
+
+
+    //Console Group End
+    const consoleGroupEnd = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Group End"
+    );
+
+    consoleGroupEnd.addEventListener('click', e => {
+      e.preventDefault();
+      console.groupEnd();
+    })
+
+
+    //Console Table
+    const consoleTable = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Table"
+    );
+
+    consoleTable.addEventListener('click', e => {
+      e.preventDefault();
+      const users = [
+        { name: "Powell", age: "unknown" },
+        { name: "Jeff", age: 20 },
+        { name: "Shelby", age: "unknown" }
+      ];
+      console.table(users);
+    })
+
+
+
+    //Console Time
+    const consoleTimeStart = errorBtns.find(
+      btn => btn.textContent.trim() === "Start Timer"
+    );
+
+    consoleTimeStart.addEventListener('click', e => {
+      e.preventDefault();
+      console.time('timer');
+    })
+
+
+    //Console Time End
+    const consoleTimeEnd = errorBtns.find(
+      btn => btn.textContent.trim() === "End Timer"
+    );
+
+    consoleTimeEnd.addEventListener('click', e => {
+      e.preventDefault();
+      console.timeEnd('timer');
+    })
+
+
+    //Console Trace
+    const consoleTrace = errorBtns.find(
+      btn => btn.textContent.trim() === "Console Trace"
+    );
+
+    consoleTrace.addEventListener('click', e => {
+      e.preventDefault();
+      console.trace();
+    })
+
+
+    //Console Global Error
+    const consoleGlobalError = errorBtns.find(
+      btn => btn.textContent.trim() === "Trigger a Global Error"
+    );
+
+    consoleGlobalError.addEventListener('click', e => {
+      e.preventDefault();
+      try {
+        throw new Error("purposeful error");
+      }
+      catch(error){
+        console.log("caught an error!");
+      }
+    })
+
+
+
+    try {
+      console.trac();
+    }
+    catch (error) {
+      console.error('console.trace() did not work!');
+    }
+    finally {
+      console.log('please fix your code!');
+    }
+
+
+
+    function checkAge(age) {
+      if (age < 21){
+        throw new Error("You must be at least 21 to drink!");
+      }
+      return "Acces granted"
+    }
+
+    try {
+      console.log(checkAge(16));
+    }
+    catch (error) {
+      console.error("NOT OLD ENOUGHT TO DRINK!");
+    }
+
+
+    TrackJS.track('Testing TrackJS!');
+
   </script>
 </body>
 
